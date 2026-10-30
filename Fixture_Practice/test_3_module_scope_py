@@ -1,0 +1,31 @@
+# MODULE scope
+# The fixture is created ONCE per test FILE (module) and shared by every test in that file.
+# Another file would get its own new copy.
+import pytest
+
+CONNECTIONS = {"count": 0}
+
+
+@pytest.fixture(scope="module")
+def db_connection():
+    """Real-world use: opening a database connection or seeding a test table takes time,
+    so do it once for all tests in this file, then clean up after the last test in the file."""
+    CONNECTIONS["count"] += 1
+    print(f"\n  🗄️ [MODULE setup]    open DB connection #{CONNECTIONS['count']} + seed 3 users")
+    connection = {"number": CONNECTIONS["count"], "users": ["anu", "ravi", "kiran"]}
+    yield connection
+    print(f"\n  🗄️ [MODULE teardown] remove test data + close DB connection #{connection['number']}")
+
+
+def test_user_count(db_connection):
+    assert len(db_connection["users"]) == 3
+    assert db_connection["number"] == 1
+
+
+def test_find_user(db_connection):
+    assert "ravi" in db_connection["users"]
+    assert db_connection["number"] == 1          # SAME connection (not opened again)
+
+
+def test_connection_opened_only_once(db_connection):
+    assert CONNECTIONS["count"] == 1             # 3 tests in this file, but only 1 connection
