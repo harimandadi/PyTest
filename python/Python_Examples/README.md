@@ -14,6 +14,8 @@ python -m pytest python/Python_Examples -v
 | `test_04_oop.py` | encapsulation (`BankAccount` with `Decimal`), abstract `BasePage` and inheritance, polymorphism, dataclasses with ordering, `classmethod` and `staticmethod`, stack, LRU cache, singleton |
 | `test_05_qa_utilities.py` | log parsing, JSON diff, masking secrets, email validation, CSV and JSON test data, JUnit XML summary, `wait_until` polling, UI sort validation, unique test data, business-day dates, flaky-test detection, URL parsing |
 
+**New to a topic? Start with [`Concepts/`](Concepts/README.md):** 15 lessons from basic to advanced, each with memory hooks.
+
 ## How to answer a coding question like a QA Lead
 
 1. Repeat the problem back and **ask about edge cases** (empty input, duplicates, case, negatives, very large input).
