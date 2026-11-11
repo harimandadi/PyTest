@@ -1,0 +1,6 @@
+[
+  { "id": "exact-name", "term": "Blue Top", "expected_names": ["Blue Top"] },
+  { "id": "case-insensitive", "term": "tshirt", "expected_names": ["Men Tshirt"] },
+  { "id": "partial-match", "term": "dress", "expected_names": ["Sleeveless Dress"] },
+  { "id": "no-results", "term": "spaceship", "expected_names": [] }
+]
